@@ -1,65 +1,36 @@
-<div class="">
-  <md-toolbar color="primary">
-    <span>Late sanasieppo</span>
-    <span class="spacing"></span>
-    <span>
-      <button md-menu-item [mdMenuTriggerFor]="menu" color="accent">
-        <md-icon> more_vert </md-icon>
-        <span> Menu </span>
-      </button>
-    </span>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item>
-        <md-icon>dialpad</md-icon>
-        <span>Redial</span>
-      </button>
-      <button md-menu-item disabled>
-        <md-icon>voicemail</md-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button md-menu-item>
-        <md-icon>notifications_off</md-icon>
-        <span>Disable alerts</span>
-      </button>
-    </md-menu>
-  </md-toolbar>
-  <div fxLayout="row" fxLayoutAlign="space-around stretch" >
-    <md-card class="late-card card-2">
-      <md-card-header>
-        <md-card-title>
-          <h1 class="mat-h1">LATE SANASIEPPO</h1>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
-        <form>
-          <md-input-container class="center">
-            <textarea 
-              [(ngModel)]="speak.text" 
-              name="speak" 
-              id="speak" 
-              rows="12" 
-              mdInput 
-              class="tarea center"
-              placeholder="Kirjoita ja kone puhuu" 
-              
-              (keyup)="onKey($event)"></textarea>
-          </md-input-container>
-        </form>
-        <p>{{test}}</p>
-      </md-card-content>
-      <md-card-actions>
-        <div class="button-row">
-          <button md-raised-button color="accent" (click)="speakToMe()">Puhu</button>
-          <button md-raised-button color="warn" (click)="clear()">Tyhjennä</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">LATE SANASIEPPO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> 
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card border-light m-4">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Kirjoita ja antaa koneen puhua</label>
+              <textarea 
+                class="form-control" 
+                id="speak" 
+                name="speak" 
+                rows="12"  
+                (keyup)="onKey($event)" 
+                [(ngModel)]="speak.text"></textarea>
+            </div>
+            <button class="btn btn-success" (click)="speakToMe()">Puhu</button>
+            <button class="btn btn-alert" (click)="clear()">Tyhjennä</button>
+          </form>
         </div>
-      </md-card-actions>
-      <md-card-footer>
-        <md-select placeholder="Viimeisimmät lauseet">
-          <md-option *ngFor="let food of foods" [value]="food.value">
-            {{ food.viewValue }}
-          </md-option>
-        </md-select>
-      </md-card-footer>
-    </md-card>
+        <div class="card-footer mute-text">
+          {{test}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+ 
