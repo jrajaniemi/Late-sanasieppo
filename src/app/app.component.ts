@@ -28,11 +28,7 @@ export class AppComponent {
   voice: SpeechSynthesisVoice;
   test = '';
 
-  foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  texts = [];
 
   constructor() {
     this.loadVoices();
@@ -47,6 +43,25 @@ export class AppComponent {
     console.log(this.voice);
   }
 
+  onSelect(text: string) {
+    this.loadVoices();
+    this.test = text;
+    if ('speechSynthesis' in window) {
+      this.test = 'Selaimesi tukee puhesyntetisaattoria';
+    } else {
+      this.test = 'Pahoittelen ettei selaimesi tue puhesyntetisaattoria';
+    }
+
+    const msg = new SpeechSynthesisUtterance();
+    msg.volume = this.speak.volume;
+    msg.pitch = this.speak.pitch;
+    msg.rate = this.speak.rate;
+    msg.voice = this.voice;
+    if (text.length > 0) {
+      msg.text = text;
+      window.speechSynthesis.speak(msg);
+    }
+  }
 
   speakToMe() {
     this.loadVoices();
@@ -65,10 +80,15 @@ export class AppComponent {
     if (this.speak.text.length > 0) {
       msg.text = this.speak.text;
       window.speechSynthesis.speak(msg);
+      if (this.texts.length > 4) {
+        this.texts.shift();
+      }
+      this.texts.push(this.speak.text);
     } else {
       msg.text = 'Kirjoita teksti, niin voin lausua sen';
       window.speechSynthesis.speak(msg);
     }
+    console.log(this.texts);
   }
 
   onKey(event: any) {

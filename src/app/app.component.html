@@ -2,28 +2,40 @@
   <a class="navbar-brand" href="#">LATE SANASIEPPO</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button> 
+  </button>
 </nav>
 
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="card border-light m-4">
+      <div class="card border-light m-1">
         <div class="card-body">
           <form>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Kirjoita ja antaa koneen puhua</label>
-              <textarea 
-                class="form-control" 
-                id="speak" 
-                name="speak" 
-                rows="12"  
-                (keyup)="onKey($event)" 
+              <label for="exampleFormControlTextarea1">Kirjoita ja anna koneen puhua</label>
+              <textarea
+                class="form-control"
+                id="speak"
+                name="speak"
+                rows="12"
+                (keyup)="onKey($event)"
                 [(ngModel)]="speak.text"></textarea>
             </div>
             <button class="btn btn-success" (click)="speakToMe()">Puhu</button>
             <button class="btn btn-alert" (click)="clear()">Tyhjennä</button>
           </form>
+        </div>
+        <div class="card-body">
+          <div class="row"  *ngFor="let text of texts">
+            <div class="col mb-1">
+              <div class="input-group">
+                <span class="input-group-addon" (click)="onSelect(text)">
+                  <i class="material-icons">record_voice_over</i>
+                </span>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" value="{{text}}">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-footer mute-text">
           {{test}}
@@ -33,4 +45,3 @@
   </div>
 </div>
 
- 
