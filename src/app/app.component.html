@@ -62,6 +62,7 @@
           <ul class="list-group">
             <li class="list-group-item"
                 *ngFor="let text of savedTexts, let i=index"
+                (click)="onSelect(text)"
                 >{{text}}
                 <button type="button" class="close" aria-label="Close" (click)="removeFromLocalStorage(text,i)">
                   <span aria-hidden="true">&times;</span>
