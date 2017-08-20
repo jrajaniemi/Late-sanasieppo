@@ -7,41 +7,72 @@
 
 <div class="container">
   <div class="row">
-    <div class="col">
-      <div class="card border-light m-1">
+    <div class="col-lg-8 mb-3">
+      <div class="card">
         <div class="card-body">
           <form>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Kirjoita ja anna koneen puhua</label>
               <textarea
+                [class.green-left]="isGreenLeft"
                 class="form-control"
                 id="speak"
                 name="speak"
-                rows="12"
+                rows="4"
                 (keyup)="onKey($event)"
-                [(ngModel)]="speak.text"></textarea>
+                [(ngModel)]="speak.text"
+                ></textarea>
             </div>
             <button class="btn btn-success" (click)="speakToMe()">Puhu</button>
             <button class="btn btn-alert" (click)="clear()">Tyhjennä</button>
           </form>
         </div>
         <div class="card-body">
-          <div class="row"  *ngFor="let text of texts">
-            <div class="col mb-1">
-              <div class="input-group">
-                <span class="input-group-addon" (click)="onSelect(text)">
-                  <i class="material-icons">record_voice_over</i>
-                </span>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" value="{{text}}">
+          <form>
+            <div class="row" *ngFor="let text of texts, let i=index">
+              <div class="col mb-1">
+                <div class="input-group">
+                  <input type="text" class="form-control" [value]="text" disabled>
+                  <span class="input-group-addon" (click)="onSelect(text)">
+                    <i class="material-icons">record_voice_over</i>
+                  </span>
+                  <span class="input-group-addon" (click)="onEdit(text, i)">
+                    <i class="material-icons">mode_edit</i>
+                  </span>
+                  <span class="input-group-addon" (click)="saveToLocalStorage(text,i)">
+                    <i class="material-icons">save</i>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
+
         </div>
-        <div class="card-footer mute-text">
+        <div class="card-footer">
           {{test}}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+          Tallennetut lauseet
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item"
+                *ngFor="let text of savedTexts, let i=index"
+                >{{text}}
+                <button type="button" class="close" aria-label="Close" (click)="removeFromLocalStorage(text,i)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <button class="btn" (click)="clearLocalStorage()">Clear LocalStorage</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
