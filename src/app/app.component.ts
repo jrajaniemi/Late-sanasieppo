@@ -49,6 +49,28 @@ export class AppComponent implements OnInit {
     console.log(this.voice);
   }
 
+  addText(text: string) {
+    this.loadVoices();
+    this.test = text.trim();
+    if ('speechSynthesis' in window) {
+      this.test = 'Selaimesi tukee puhesyntetisaattoria';
+    } else {
+      this.test = 'Pahoittelen ettei selaimesi tue puhesyntetisaattoria';
+    }
+
+    const msg = new SpeechSynthesisUtterance();
+    msg.volume = this.speak.volume;
+    msg.pitch = this.speak.pitch;
+    msg.rate = this.speak.rate;
+    msg.voice = this.voice;
+    if (text.length > 0) {
+      msg.text = text.trim();
+      window.speechSynthesis.speak(msg);
+    }
+    this.speak.text = text.trim();
+    this.refreshSavedTexts();
+  }
+
   onSelect(text: string) {
     this.loadVoices();
     this.test = text.trim();

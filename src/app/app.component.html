@@ -13,6 +13,15 @@
           <form>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Kirjoita ja anna koneen puhua</label>
+              <div class="btn-group m-2" role="group" aria-label="Basic example">
+                <button class="btn btn-info" (click)="addText('Mitä')">Mitä?</button>
+                <button class="btn btn-info" (click)="addText('Miksi')">Miksi?</button>
+                <button class="btn btn-info" (click)="addText('Kuka')">Kuka?</button>
+                <button class="btn btn-info" (click)="addText('Miten')">Miten?</button>
+                <button class="btn btn-info" (click)="addText('Missä')">Missä?</button>
+                <button class="btn btn-success" (click)="addText('Kyllä')">Kyllä</button>
+                <button class="btn btn-danger" (click)="addText('Ei')">Ei</button>
+              </div>
               <textarea
                 [class.green-left]="isGreenLeft"
                 class="form-control"
