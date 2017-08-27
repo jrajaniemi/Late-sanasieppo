@@ -1,88 +1,96 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">LATE SANASIEPPO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">LATE SANASIEPPO</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="/late/">Suomeksi</a>
+        <a class="mdl-navigation__link" href="/late/">På Svenska</a>
+        <a class="mdl-navigation__link" href="/late/">In English</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">SANASIEPPO</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/late/">Suomeksi</a>
+      <a class="mdl-navigation__link" href="/late/">På Svenska</a>
+      <a class="mdl-navigation__link" href="/late/">In English</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="mdl-grid">
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Kirjoita ja anna koneen puhua</label>
-              <div class="btn-group m-2" role="group" aria-label="Basic example">
-                <button class="btn btn-info" (click)="addText('Mitä')">Mitä?</button>
-                <button class="btn btn-info" (click)="addText('Miksi')">Miksi?</button>
-                <button class="btn btn-info" (click)="addText('Kuka')">Kuka?</button>
-                <button class="btn btn-info" (click)="addText('Miten')">Miten?</button>
-                <button class="btn btn-info" (click)="addText('Missä')">Missä?</button>
-                <button class="btn btn-success" (click)="addText('Kyllä')">Kyllä</button>
-                <button class="btn btn-danger" (click)="addText('Ei')">Ei</button>
-              </div>
-              <textarea
-                [class.green-left]="isGreenLeft"
-                class="form-control"
-                id="speak"
-                name="speak"
-                rows="4"
-                (keyup)="onKey($event)"
-                [(ngModel)]="speak.text"
-                ></textarea>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-desktop">
+          <div class="late-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Kirjoita ja anna koneen puhua</h2>
             </div>
-            <button class="btn btn-success" (click)="speakToMe()">Puhu</button>
-            <button class="btn btn-alert" (click)="clear()">Tyhjennä</button>
-          </form>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="row" *ngFor="let text of texts, let i=index">
-              <div class="col mb-1">
-                <div class="input-group">
-                  <input type="text" class="form-control" [value]="text" disabled>
-                  <span class="input-group-addon" (click)="onSelect(text)">
-                    <i class="material-icons">record_voice_over</i>
+            <div class="mdl-card__title">
+              <h3 class="mdl-card__title-text" i18n>Hello World!</h3>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <button class="mdl-button" (click)="addText('Mitä')">Mitä?</button>
+              <button class="mdl-button" (click)="addText('Miksi')">Miksi?</button>
+              <button class="mdl-button" (click)="addText('Kuka')">Kuka?</button>
+              <button class="mdl-button" (click)="addText('Miten')">Miten?</button>
+              <button class="mdl-button" (click)="addText('Missä')">Missä?</button>
+              <button class="mdl-button" (click)="addText('Kyllä')">Kyllä</button>
+              <button class="mdl-button" (click)="addText('Ei')">Ei</button>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <div class="mdl-textfield mdl-js-textfield">
+                <textarea #textAreaBox class="mdl-textfield__input form-control" type="text" id="speak" name="speak" rows="4" (keyup)="onKey($event)"
+                  [(ngModel)]="speak.text"></textarea>
+                <label class="mdl-textfield__label" for="speal">Kirjoita tähän...</label>
+              </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" (click)="speakToMe()">Puhu</button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" (click)="clear()">Tyhjennä</button>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <div class="mdl-list">
+                <div class="mdl-list__item" *ngFor="let text of texts, let i=index">
+                  <span class="mdl-list__item-primary-content">
+                    <span (click)="onSelect(text)">{{text}}</span>
                   </span>
-                  <span class="input-group-addon" (click)="onEdit(text, i)">
-                    <i class="material-icons">mode_edit</i>
-                  </span>
-                  <span class="input-group-addon" (click)="saveToLocalStorage(text,i)">
-                    <i class="material-icons">save</i>
+                  <span class="mdl-list__item-secondary-action">
+                    <i (click)="onSelect(text)" class="material-icons">record_voice_over</i>
+                    <i (click)="onEdit(text, i)" class="material-icons">mode_edit</i>
+                    <i (click)="saveToLocalStorage(text,i)" class="material-icons">save</i>
                   </span>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
+        </div>
 
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-desktop">
+          <div class="late-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Tallennetut lauseet</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <div class="mdl-list">
+                <div class="mdl-list__item" *ngFor="let text of savedTexts, let i=index">
+                  <span class="mdl-list__item-primary-content">
+                    <span (click)="onSelect(text)">{{text}}</span>
+                  </span>
+                  <span class="mdl-list__item-secondary-action">
+                    <i (click)="removeFromLocalStorage(text,i)" class="material-icons">close</i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-footer">
-          {{test}}
-        </div>
+
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="card mb-3">
-        <div class="card-header bg-primary text-white">
-          Tallennetut lauseet
-        </div>
-        <div class="card-body">
-          <ul class="list-group">
-            <li class="list-group-item"
-                *ngFor="let text of savedTexts, let i=index"
-                (click)="onSelect(text)"
-                >{{text}}
-                <button type="button" class="close" aria-label="Close" (click)="removeFromLocalStorage(text,i)">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body">
-          <button class="btn" (click)="clearLocalStorage()">Poista kaikki</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 </div>

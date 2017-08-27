@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+
 import { NgClass } from '@angular/common';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Md5 } from 'ts-md5/dist/md5';
+import { FocusModule} from 'angular2-focus';
 
 export class Speak {
   text: string;
@@ -11,13 +15,14 @@ export class Speak {
   pitch: number;
 }
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit, OnInit {
+  @ViewChild('textAreaBox') textAreaBox: ElementRef;
+
   speak: Speak = {
     text: '',
     voice: 'Satu',
@@ -35,10 +40,17 @@ export class AppComponent implements OnInit {
   submitted = false;
   isGreenLeft = false;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private renderer: Renderer) {
     this.loadVoices();
-    console.log(Md5.hashStr('blah blah blah'));
+    // console.log(Md5.hashStr('blah blah blah'));
   }
+  /*
+  randomSavo() {
+    const pituus: number = this.savo.length;
+    const i: number = Math.floor( Math.random() * (pituus - 1));
+    this.addText(this.savo[i]);
+  }
+  */
 
   loadVoices() {
     // Fetch the available voices.
@@ -46,11 +58,12 @@ export class AppComponent implements OnInit {
     const lang = 'fi-FI';
     // Loop through each of the voices.
     this.voice = voices.find(i => i.lang === lang);
-    console.log(this.voice);
+    // console.log(this.voice);
   }
 
   addText(text: string) {
     this.loadVoices();
+    this.speak.text = '';
     this.test = text.trim();
     if ('speechSynthesis' in window) {
       this.test = 'Selaimesi tukee puhesyntetisaattoria';
@@ -67,7 +80,7 @@ export class AppComponent implements OnInit {
       msg.text = text.trim();
       window.speechSynthesis.speak(msg);
     }
-    this.speak.text = text.trim();
+    this.speak.text = text.trim() + ' ';
     this.refreshSavedTexts();
   }
 
@@ -93,8 +106,8 @@ export class AppComponent implements OnInit {
   }
 
   onEdit(text: string, i: number) {
-    console.log(text);
-    console.log(i);
+    // console.log(text);
+    // console.log(i);
     this.isGreenLeft = true;
     this.speak.text = text.trim();
     this.refreshSavedTexts();
@@ -132,7 +145,7 @@ export class AppComponent implements OnInit {
     }
 
     this.refreshSavedTexts();
-    console.log(this.texts);
+    // console.log(this.texts);
   }
 
   onKey(event: any) {
@@ -151,11 +164,12 @@ export class AppComponent implements OnInit {
 
   saveToLocalStorage(text: string, i: number) {
     text = text.trim().toLowerCase();
-    console.log(text + ' ' + i);
+    // console.log(text + ' ' + i);
     const hash = Md5.hashStr(text).toString();
     localStorage.setItem(hash, text);
-    console.log(text + ' ' + i + ' ' + hash);
-    console.log(localStorage);
+    this.speak.text = '';
+    // console.log(text + ' ' + i + ' ' + hash);
+    // console.log(localStorage);
     this.refreshSavedTexts();
   }
 
@@ -164,17 +178,18 @@ export class AppComponent implements OnInit {
     for (let i = 0; i < localStorage.length; i++ ) {
       this.savedTexts[i] = localStorage.getItem(localStorage.key(i));
     }
+    this.textAreaBox.nativeElement.focus();
   }
 
   removeFromLocalStorage(text: string, i: number) {
     text = text.trim().toLowerCase();
     const hash = Md5.hashStr(text).toString();
     localStorage.removeItem(hash);
-    console.log(this.savedTexts);
+    // console.log(this.savedTexts);
     this.refreshSavedTexts();
-    console.log('Remove LS: ' + text + ' ' + i + ' ' + hash);
-    console.log(localStorage);
-    console.log(this.savedTexts);
+    // console.log('Remove LS: ' + text + ' ' + i + ' ' + hash);
+    // console.log(localStorage);
+    // console.log(this.savedTexts);
   }
 
   clearLocalStorage() {
@@ -183,5 +198,9 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.refreshSavedTexts();
+  }
+
+  ngAfterViewInit() {
+    this.textAreaBox.nativeElement.focus();
   }
 }
