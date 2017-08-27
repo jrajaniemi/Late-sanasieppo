@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-i18n": "ng build --aot --locale fi --i18n-format xlf --i18n-file src/i18n/messages.fi.xlf; for lang in fi en se; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
+    "build-i18n": "ng build --aot -prod --locale fi --i18n-format xlf --i18n-file src/i18n/messages.fi.xlf; for lang in fi en se; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
