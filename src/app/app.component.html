@@ -7,18 +7,18 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="/late/fi">Suomeksi</a>
-        <a class="mdl-navigation__link" href="/late/se">På Svenska</a>
-        <a class="mdl-navigation__link" href="/late/en">In English</a>
+        <a class="mdl-navigation__link" href="/fi" i18n>Suomeksi</a>
+        <a class="mdl-navigation__link" href="/se" i18n>På Svenska</a>
+        <a class="mdl-navigation__link" href="/en" i18n>In English</a>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">SANASIEPPO</span>
+    <span class="mdl-layout-title" i18n>SANASIEPPO</span>
     <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="/late/fi">Suomeksi</a>
-        <a class="mdl-navigation__link" href="/late/se">På Svenska</a>
-        <a class="mdl-navigation__link" href="/late/en">In English</a>
+        <a class="mdl-navigation__link" href="/fi" i18n>Suomeksi</a>
+        <a class="mdl-navigation__link" href="/se" i18n>På Svenska</a>
+        <a class="mdl-navigation__link" href="/en" i18n>In English</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -28,30 +28,28 @@
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-desktop">
           <div class="late-card mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">Kirjoita ja anna koneen puhua</h2>
-            </div>
-            <div class="mdl-card__title">
-              <h3 class="mdl-card__title-text" i18n>Hello World!</h3>
+              <h2 class="mdl-card__title-text" i18n>Kirjoita ja anna koneen puhua</h2>
             </div>
             <div class="mdl-card__supporting-text">
-              <button class="mdl-button" (click)="addText('Mitä')">Mitä?</button>
-              <button class="mdl-button" (click)="addText('Miksi')">Miksi?</button>
-              <button class="mdl-button" (click)="addText('Kuka')">Kuka?</button>
-              <button class="mdl-button" (click)="addText('Miten')">Miten?</button>
-              <button class="mdl-button" (click)="addText('Missä')">Missä?</button>
-              <button class="mdl-button" (click)="addText('Kyllä')">Kyllä</button>
-              <button class="mdl-button" (click)="addText('Ei')">Ei</button>
+              <button class="mdl-button" (click)="addText('Kuka')" i18n>Kuka?</button>
+              <button class="mdl-button" (click)="addText('Mitä')" i18n>Mitä?</button>
+              <button class="mdl-button" (click)="addText('Missä')" i18n>Missä?</button>
+              <button class="mdl-button" (click)="addText('Missä')" i18n>Milloin?</button>
+              <button class="mdl-button" (click)="addText('Miksi')" i18n>Miksi?</button>
+              <button class="mdl-button" (click)="addText('Miten')" i18n>Miten?</button>
+              <button class="mdl-button" (click)="addText('Kyllä')" i18n>Kyllä</button>
+              <button class="mdl-button" (click)="addText('Ei')" i18n>Ei</button>
             </div>
             <div class="mdl-card__supporting-text">
               <div class="mdl-textfield mdl-js-textfield">
                 <textarea #textAreaBox class="mdl-textfield__input form-control" type="text" id="speak" name="speak" rows="4" (keyup)="onKey($event)"
                   [(ngModel)]="speak.text"></textarea>
-                <label class="mdl-textfield__label" for="speal">Kirjoita tähän...</label>
+                <label class="mdl-textfield__label" for="speal" i18n>Kirjoita tähän...</label>
               </div>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" (click)="speakToMe()">Puhu</button>
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" (click)="clear()">Tyhjennä</button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" (click)="speakToMe()" i18n>Puhu</button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" (click)="clear()" i18n>Tyhjennä</button>
             </div>
             <div class="mdl-card__supporting-text">
               <div class="mdl-list">
@@ -73,7 +71,7 @@
         <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-desktop">
           <div class="late-card mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">Tallennetut lauseet</h2>
+              <h2 class="mdl-card__title-text" i18n>Tallennetut lauseet</h2>
             </div>
             <div class="mdl-card__supporting-text">
               <div class="mdl-list">

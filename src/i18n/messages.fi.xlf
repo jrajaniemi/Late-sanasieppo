@@ -2,9 +2,153 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="5816217f424111ae4c91dd72ee1db0ae252763b5" datatype="html">
-        <source>Hello World!</source>
-        <target>Heippa hei!</target>
+      <trans-unit id="745fd2fcc5af8ea1a1b76ecac140f9806fab2d97" datatype="html">
+        <source>Suomeksi</source>
+        <target>Suomeksi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3291aaa590f4f089d4985d612fa561f1977d006c" datatype="html">
+        <source>På Svenska</source>
+        <target>På Svenska</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ce3954146db2b86c22b5d69a4bcc41bb8924e2da" datatype="html">
+        <source>In English</source>
+        <target>In English</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d1e3d950e3c65bb07d5c163ba2862ce251f7e94d" datatype="html">
+        <source>SANASIEPPO</source>
+        <target>SANASIEPPO</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="64b62ec3c5c810de3c2857c9aba48de59bcabffd" datatype="html">
+        <source>Kirjoita ja anna koneen puhua</source>
+        <target>Kirjoita ja anna koneen puhua</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b89d4eb55b833e2c535f96444aa3d6ef63a0370b" datatype="html">
+        <source>Kuka?</source>
+        <target>Kuka?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49f5f5e0ac26d07da89f7114fe947bdfc5161759" datatype="html">
+        <source>Mitä?</source>
+        <target>Mitä?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1e592150dce9eae38c2a538ff7b6546d12e1c074" datatype="html">
+        <source>Missä?</source>
+        <target>Missä?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="40135b8ef6b084aeb3c9d7d785ad347e7136b241" datatype="html">
+        <source>Milloin?</source>
+        <target>Milloin?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d32e514dd51ef2b36c25b0874149aba3cc3f2bc8" datatype="html">
+        <source>Miksi?</source>
+        <target>MIksi?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="68ebbf0554a9a3cc2c04357a23930e896f714b3c" datatype="html">
+        <source>Miten?</source>
+        <target>Miten?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7edfaae5870f95bd77ca087447d6dbea634c1c6d" datatype="html">
+        <source>Kyllä</source>
+        <target>Kyllä</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="98b7e5de5fbc9d8f45bbe84ce9eff513071a5de2" datatype="html">
+        <source>Ei</source>
+        <target>Ei</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65df230933d2d877c631c2a26cbe39f7015e622b" datatype="html">
+        <source>Kirjoita tähän...</source>
+        <target>Kirjoita tähän...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9cf7a8669e6a69879e3879609fe48df0caf89186" datatype="html">
+        <source>Puhu</source>
+        <target>Puhu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bcf358123960dcae963f8597e42385c87fc86012" datatype="html">
+        <source>Tyhjennä</source>
+        <target>Tyhjennä</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4b017d82422e503c3db36a3af3a64c7bd3d203be" datatype="html">
+        <source>Tallennetut lauseet</source>
+        <target>Tallennetut lauseet</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
       </trans-unit>
     </body>
   </file>
