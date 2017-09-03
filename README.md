@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
 
-Demo found from [marsmodule](http://www.marsmodule.com)
+Demo found from [marsmodule](http://www.marsmodule.com).
 
 ## Development server
 

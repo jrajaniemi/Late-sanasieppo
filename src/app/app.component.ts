@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
-
-import { NgClass } from '@angular/common';
+import { NgClass, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Md5 } from 'ts-md5/dist/md5';
@@ -18,7 +17,9 @@ export class Speak {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+
 })
 export class AppComponent implements AfterViewInit, OnInit {
   @ViewChild('textAreaBox') textAreaBox: ElementRef;
@@ -39,25 +40,30 @@ export class AppComponent implements AfterViewInit, OnInit {
   closeResult: string;
   submitted = false;
   isGreenLeft = false;
+  locationPath = '';
+  lang: string;
 
-  constructor(private modalService: NgbModal, private renderer: Renderer) {
+  constructor(private modalService: NgbModal, private renderer: Renderer, location: Location) {
     this.loadVoices();
-    // console.log(Md5.hashStr('blah blah blah'));
+    this.locationPath = location.path();
+    this.lang = 'fi-FI';
   }
-  /*
-  randomSavo() {
-    const pituus: number = this.savo.length;
-    const i: number = Math.floor( Math.random() * (pituus - 1));
-    this.addText(this.savo[i]);
-  }
-  */
 
   loadVoices() {
     // Fetch the available voices.
     const voices = speechSynthesis.getVoices();
-    const lang = 'fi-FI';
+    this.lang = 'fi-FI';
+    if (this.locationPath === '/fi') {
+      this.lang = 'fi-FI';
+    } else if (this.locationPath === '/se') {
+      this.lang = 'se-SE';
+    } else if (this.locationPath === '/en') {
+      this.lang = 'en-EN';
+    }
+    console.log(this.locationPath);
+    console.log(this.lang);
     // Loop through each of the voices.
-    this.voice = voices.find(i => i.lang === lang);
+    this.voice = voices.find(i => i.lang === this.lang);
     // console.log(this.voice);
   }
 
