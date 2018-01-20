@@ -1,6 +1,6 @@
 FROM node:carbon
 
-RUN package-lock.json
+RUN if [ -f package-lock.json ] then rm package-lock.json fi
 
 RUN apt update
 RUN apt -y install net-tools dnsutils joe wget 
