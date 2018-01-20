@@ -12,8 +12,12 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2016",
+      "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/angular2-focus/src/focus.module.ts"
+  ]
 }
